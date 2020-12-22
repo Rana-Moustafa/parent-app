@@ -36,5 +36,17 @@ To login use this user to test with:
 
 
 
+
+### Used Versions 
+
+Dillinger is currently extended with the following plugins. Instructions on how to use them in your own application are linked below.
+
+|   | version |
+| ------ | ------ |
+| @angular/cli| 8.3.29 |
+| node| 12.16.3 |
+
+
+
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
