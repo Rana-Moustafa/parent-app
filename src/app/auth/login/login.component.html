@@ -1,0 +1,33 @@
+<section class="login-form">
+    <h4>Welcome back!</h4>
+    <p>Please login to access your <strong>Spaces</strong> dashboard</p>
+
+    <form (ngSubmit)="userLogin(loginForm)" #loginForm="ngForm">
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" placeholder="Username..." ngModel name="username"
+                required #username="ngModel">
+
+            <small class="help-block text-warning"
+                *ngIf="!username.valid && username.touched && username.errors.required">
+                username is required!
+            </small>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="col-sm-2 col-form-label">Password</label>
+            <input type="password" class="form-control" id="password" ngModel name="password" required
+                #password="ngModel">
+            <small class="help-block text-warning"
+                *ngIf="!password.valid && password.touched && password.errors.required">
+                password is required!
+            </small>
+        </div>
+        <div class="d-flex">
+            <a class="forget-password">Forgot password?</a>
+            <button type="submit" class="btn mb-3 main-btn" [disabled]="!loginForm.valid">Login</button>
+        </div>
+    </form>
+    <div class="alert alert-danger p-2" role="alert" *ngIf="errorMsg">
+        {{errorMsg}}
+    </div>
+</section>

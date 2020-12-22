@@ -1,0 +1,48 @@
+<div class="addEditModal" id="addEditModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="addEditModal" aria-hidden="true" [ngClass]="modalData.class === 'show'? 'show': 'modal'">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-header__img">
+                    <img class="img-thumbnail rounded-circle"
+                        [src]="modalData.user?modalData.user.avatar: '../../../assets/images/avatar.png' " />
+                </div>
+            </div>
+            <div class="modal-body mt-4">
+                <div class="alert" role="alert" [ngClass]="{'alert-success' : successMsg , 'alert-danger' :  errorMsg}"
+                    *ngIf="successMsg || errorMsg">
+                    {{successMsg? successMsg : errorMsg? errorMsg : ''}}
+                </div>
+                <form (ngSubmit)="addOrEditUser(userForm)" #userForm="ngForm">
+                    <div class="mb-3">
+                        <label class="form-label">Username</label>
+                        <input type="text" class="form-control"
+                            [ngModel]="(modalData.user?modalData.user.first_name: '') + ' ' + (modalData.user?modalData.user.last_name: '')"
+                            name="username" #username="ngModel">
+
+                        <small class="help-block"
+                            *ngIf="!username.valid && username.touched && username.errors.required">
+                            username is required!
+                        </small>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Job title</label>
+                        <input type="text" class="form-control" [ngModel] name="job" required #job="ngModel">
+
+                        <small class="help-block"
+                            *ngIf="!username.valid && username.touched && username.errors.required">
+                            username is required!
+                        </small>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn secondary-btn" (click)="closeModal()">Cancel</button>
+                        <button type="submit" class="btn main-btn" [disabled]="!username.valid">
+                            {{modalData.user? 'Edit' : 'Add'}}
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

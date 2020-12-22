@@ -1,0 +1,13 @@
+<div class="user-details d-flex flex-column align-items-center mt-4">
+    <div class="user-details__avatar mb-2">
+        <img [src]="singleUser.avatar" class="img-thumbnail rounded-circle" />
+    </div>
+    <p>{{singleUser.first_name}} {{singleUser.last_name}}</p>
+
+    <div class="d-flex justify-content-between w-100 mt-2">
+        <button type="button" class="btn main-btn" (click)="openModal(singleUser)"> 
+            <fa-icon [icon]="faPen"></fa-icon> Edit</button>
+        <button type="button" class="btn secondary-btn">
+            <fa-icon [icon]="faTrash"></fa-icon> Delete</button>
+    </div>
+</div>

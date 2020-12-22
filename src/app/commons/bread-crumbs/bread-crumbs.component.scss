@@ -1,0 +1,14 @@
+@import "../../../variables";
+
+.breadcrumb {
+  a {
+    margin-left: 5px;
+  }
+
+  span,
+    a {
+      font-size: $font-size-3;
+      color: $main-color;
+      text-decoration: none;
+    }
+}

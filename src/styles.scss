@@ -1,0 +1,64 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/scss/bootstrap-grid.scss";
+@import "_variables.scss";
+@import "_fonts.scss";
+
+html,
+body {
+  font-family: "SF UI Display Medium";
+  background-color: $light-gray;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: $text-color-1;
+  @include media-breakpoint-up(lg) {
+    padding: 0 2.6em;
+  }
+}
+
+.main-btn,
+.secondary-btn {
+  border-radius: 25px;
+  border: 1px solid $main-color;
+  padding: 7px 20px;
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.secondary-btn {
+  background-color: #fff;
+  color: $main-color;
+  border: 1px solid $main-color;
+
+  &:hover {
+    background-color: $main-color;
+    color: #fff;
+  }
+}
+
+.main-btn {
+  background-color: $main-color;
+  color: #fff;
+  border: 1px solid $main-color;
+
+  &:hover {
+    background-color: #fff;
+    color: $main-color;
+  }
+}
+
+form {
+  .form-control {
+    &:focus {
+      box-shadow: none;
+      border-color: $main-color;
+    }
+    &::-webkit-input-placeholder {
+      color: $text-color-2;
+      font-size: $font-size-2;
+    }
+  }
+}

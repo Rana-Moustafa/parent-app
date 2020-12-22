@@ -1,0 +1,55 @@
+<section class="users-list p-4 rounded-3">
+    <div class="d-flex justify-content-between align-items-center p-3" [ngClass]="{'adjust-width': !hideUserDetails}">
+        <div>
+            <small>User</small>
+        </div>
+        <div>
+            <small>Actions {{showLoadingSpinner}}</small>
+        </div>
+    </div>
+    <div class="d-flex justify-content-between align-items-center">
+        <div class="users-list__users" [ngClass]="{'adjust-width': !hideUserDetails}">
+            <ul class="list-group" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="20"
+                [infiniteScrollDisabled]="listDisabled" (scrolled)="getAllUsersList(pageNumber)">
+
+                <div class="list-group-item list-group-item-action p-0 m-0" routerLinkActive="active"
+                    aria-current="true" *ngFor="let user of usersList; let i = index"
+                    (click)="getSingleUserDetails(user.id, i);">
+                    <div class="list-group-item__actions d-flex justify-content-between p-3 mt-2 mb-2 rounded-3"
+                        [ngClass]="{'active': i === currentUserIndex}">
+                        <div
+                            class="list-group-item__action d-flex justify-content-between align-items-center rounded-3">
+                            <div class="users-list__users--image">
+                                <img [src]="user.avatar" class="img-thumbnail rounded-circle" [alt]="user.name">
+                            </div>
+                            <div class="users-list__users--name ms-3">
+                                <p>{{user.first_name}} {{user.last_name}}</p>
+
+                            </div>
+                        </div>
+                        <div class="users-list__actions d-flex justify-content-between align-items-center">
+                            <div class="me-3" [hidden]="!hideUserDetails && i === currentUserIndex">
+                                <span>
+                                    <fa-icon [icon]="faPen"></fa-icon>
+                                </span>
+                                <span>
+                                    <fa-icon [icon]="faTrash"></fa-icon>
+                                </span>
+                            </div>
+                            <div>
+                                <fa-icon [icon]="faChevronRight"></fa-icon>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ul>
+            <app-loading-spinner *ngIf="showLoadingSpinner"></app-loading-spinner>
+        </div>
+    </div>
+    <section class="users-list__user-details shadow-sm p-2" *ngIf="!hideUserDetails && singleUser">
+        <div class="d-flex justify-content-end">
+            <button type="button" class="btn-close" aria-label="Close" (click)="hideDetails()"></button>
+        </div>
+        <app-user-details [hideUserDetails]="hideUserDetails" [singleUser]="singleUser"></app-user-details>
+    </section>
+</section>
